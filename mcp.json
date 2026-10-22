@@ -1,0 +1,7 @@
+{
+  "mcpServers": {
+    "sparks": {
+      "url": "https://sparks.6x7.gr/api/mcp"
+    }
+  }
+}
