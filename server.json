@@ -2,10 +2,10 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "gr.6x7/sparks",
   "title": "Sparks",
-  "description": "Your Sparks idea notebook: read, create and organize notes, projects and subtasks.",
+  "description": "Your Sparks idea notebook: find, capture and organize notes, projects and subtasks. No delete tool.",
   "websiteUrl": "https://sparks.6x7.gr/help/connect-agent",
   "repository": { "url": "https://github.com/6x7gr/sparks-mcp", "source": "github" },
-  "version": "1.0.0",
+  "version": "1.1.0",
   "icons": [
     { "src": "https://sparks.6x7.gr/logo.png", "mimeType": "image/png", "sizes": ["512x512"] },
     { "src": "https://sparks.6x7.gr/logo.svg", "mimeType": "image/svg+xml", "sizes": ["any"] }

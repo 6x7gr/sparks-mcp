@@ -36,18 +36,41 @@ Verify either way by calling `list_projects`.
 
 If your platform can receive webhooks:
 1. Create or reuse an inbound webhook/trigger that starts a run on POST. Sparks sends JSON
-   `{ "note_id", "title", "project_id", "url" }`.
+   `{ "note_id", "title", "project_id", "url", "send_id", "intent?" }`.
 2. Call MCP tool `set_agent_webhook` with `url` (public https, port 443), `secret` (if your webhook needs one)
    and `auth_header` (default `Authorization`, sent as `Bearer <secret>`; e.g. `X-Webhook-Secret` otherwise).
-3. Call `get_agent_connection_status` and confirm `configured: true`.
+   Pass `accepts_intent: true` only if you follow section 3. That unlocks Plan, Build, and Research.
+   Without it, Sparks keeps one Send to agent button and does not label the job.
+3. Call `get_agent_connection_status` and confirm `configured: true`. Each target includes `accepts_intent`.
+
+If you run locally (no public URL — DeepSeek Harness desktop, local Claude Code, …):
+1. Call `set_agent_webhook` with `kind: "inbox"` (and optional `name`, and `accepts_intent: true` if you follow section 3). It returns `poll_url` and a
+   one-time `token` — store the token as a secret.
+2. Poll `GET <poll_url>` with `Authorization: Bearer <token>` on a schedule (e.g. every 10-15 min);
+   queued sends come back as `{ items: [{ note_id, title, project_id, url, send_id, intent, received_at }] }` and are
+   claimed (delivered once). `intent` is omitted on an old unlabeled send.
 
 Skip this if you can't receive webhooks; MCP still works.
 
 ## 3. When woken by Sparks
 
-Call `get_note` with the payload's `note_id`, do the work, then update the note (`update_note`,
-`add_subtask`, `mark_done`). Never delete anything.
+The JSON is `{ note_id, title, project_id, url, send_id, intent? }`.
+`intent` is `plan`, `build`, or `research`. If it is missing, this is an unlabeled send and means work.
+
+Webhook calls include `X-Sparks-Signature: sha256=<hex>`, the HMAC-SHA256 of the raw body using the webhook secret.
+Check it when you have that secret. Inbox polls are authenticated by the poll token instead, so those items are not signed.
+
+1. If you already handled this `send_id`, stop.
+2. Call `get_note`. Trust `on_hold` and `agent_job` there over the webhook. The note may have changed since the send.
+3. If `on_hold` is true, do not build. Plan and Research are still allowed.
+4. Switch on `agent_job.intent` (same value as the payload `intent` when you are the latest send):
+   - **plan** or **research**: add subtasks with `add_subtask`. Do not edit a repository. Do not replace the note body.
+   - **build**: implement, unless `on_hold` is true — then stop.
+   - missing: treat it as build, and stop if `on_hold` is true.
+5. Call `set_agent_run` with that `send_id` and `done` or `failed`. A stale `send_id` is rejected.
+
+Skip notes with `on_hold: true` when looking for work (`list_notes` with `on_hold: false`). You may still read them.
 
 ## 4. Confirm to the user
 
-Tell them it's connected (they can disconnect in Settings → Agent) and suggest: open a note → ⋯ → Send to agent.
+Tell them it's connected (they can disconnect in Settings → Agent). After `accepts_intent`, a note's ⋯ menu shows Plan, Build, and Research. Until then it stays Send to agent.
