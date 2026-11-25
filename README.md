@@ -43,6 +43,8 @@ More: <https://sparks.6x7.gr/help/connect-agent>
 
 All tools have `openWorldHint: false`. Notes tagged `#hold` or `#dont-build` come back with `on_hold: true`: agents read them but don't build them.
 
+**Linking notes:** every note has a `url` (`https://sparks.6x7.gr/notes/<id>`) in `list_notes`, `get_note` and write results. Whenever an agent mentions another Sparks note, in a note body, a subtask or its reply to the user, it puts that note's url next to the title (`[title](url)` in chat, the bare url in note text, which Sparks shows as a link). Never refer to a note by its title alone.
+
 ### Send to agent
 
 In Sparks, a note's menu can send it to your agent. Agents that opt in (`accepts_intent: true` on `set_agent_webhook`) get labelled jobs: **Plan** and **Research** add subtasks only, **Build** may implement. Webhooks are signed with `X-Sparks-Signature: sha256=<hmac>`. Agents with no public URL use `kind: "inbox"` and poll instead. Details are in the [setup skill](skills/connect-to-sparks/SKILL.md).

@@ -69,6 +69,8 @@ Check it when you have that secret. Inbox polls are authenticated by the poll to
    - missing: treat it as build, and stop if `on_hold` is true.
 5. Call `set_agent_run` with that `send_id` and `done` or `failed`. A stale `send_id` is rejected.
 
+When you mention another Sparks note anywhere (note text, a subtask, your message to the user), include its `url` from `list_notes` / `get_note` next to the title, e.g. `[Snack: speech check](https://sparks.6x7.gr/notes/<id>)`. Never name a note by title alone.
+
 Skip notes with `on_hold: true` when looking for work (`list_notes` with `on_hold: false`). You may still read them.
 
 ## 4. Confirm to the user
