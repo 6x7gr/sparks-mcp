@@ -16,16 +16,18 @@ It's written so that a person, or an agent with the right logins, can follow it 
 | Place | Status | Last action |
 | --- | --- | --- |
 | Official MCP Registry (`gr.6x7/sparks`) | **Listed**, v1.0.0 | Published 2026-10-22. v1.1.0 is ready to publish. |
-| Claude Connectors Directory | Not submitted | Field values are ready below. |
-| Claude Code plugin (this repo as a marketplace) | Works once merged | `/plugin marketplace add 6x7gr/sparks-mcp` |
-| Cursor Marketplace | Not submitted | The repo is ready. |
-| OpenAI plugin directory (Codex / ChatGPT) | Not submitted | `.codex-plugin/plugin.json` is ready. |
+| Claude Connectors Directory | Form filled 2026-11-25, owner submits | All 7 steps filled; the 7 policy boxes and Submit are left to the owner. |
+| Claude Code plugin (this repo as a marketplace) | Works | Merged 2026-11-25. `/plugin marketplace add 6x7gr/sparks-mcp` |
+| Cursor Marketplace | Not submitted | Needs the owner signed in at cursor.com first. |
+| OpenAI plugin directory (Codex / ChatGPT) | Not submitted | Needs owner sign-in, org identity verification, a demo video and a domain-check route. |
 | Grok (xAI) | No public catalog submission | Users add Sparks as a custom connector. |
-| Glama connectors | Probably imported from the registry | Check it, then claim it. |
-| awesome-remote-mcp-servers (punkpeye) | Not submitted | The entry is ready. |
-| awesome-mcp-servers (appcypher) | Not submitted | The entry is ready. |
-| mcpservers.org (wong2 list) | Not submitted | Web form. |
-| PulseMCP, mcp.so, Smithery | Not submitted | Web forms. |
+| Glama connectors | **Listed** | https://glama.ai/mcp/connectors/gr.6x7/sparks (imported from the registry). Not claimed yet. |
+| awesome-remote-mcp-servers (punkpeye) | PR open | [punkpeye/awesome-remote-mcp-servers#5852](https://github.com/punkpeye/awesome-remote-mcp-servers/pull/5852), 2026-11-25. |
+| awesome-mcp-servers (appcypher) | Not possible | The repo is archived (read-only). |
+| mcpservers.org (wong2 list) | Form filled 2026-11-25, owner submits | Free plan, review within 2 weeks. |
+| PulseMCP | Not possible right now | Submissions paused since 2026-09-03; it will import from the official registry. |
+| mcp.so | Not submitted | Has a Remote Server option. The visible path is a $39 paid listing; a free path isn't confirmed. |
+| Smithery | Not possible | Stopped taking servers on 2026-10-31 (now a curated, read-only directory). |
 
 Update this table every time something changes.
 
@@ -61,7 +63,17 @@ Update this table every time something changes.
 
 - **Where:** https://claude.ai/directory/manage → **Submit new** → **MCP connector**. You need to be signed in on a paid Claude plan.
   The docs are https://claude.com/docs/connectors/building/submission and https://claude.com/docs/connectors/building/review-criteria.
-- **Who:** a person. The form includes seven policy acknowledgments, so an agent can't submit it.
+- **Who:** an agent can fill it; a person ticks the seven policy acknowledgments and presses Submit.
+- **How the form works (2026-11-25):** 7 steps: Source, Content, Listing, Test & launch, Data handling, Compliance, Review and submit.
+  Step 1 has its own **Add custom connector** button, which adds the connector and runs the Sparks sign-in. Use it when an agent
+  drives the browser, because Claude in Chrome isn't allowed on claude.ai Settings pages.
+  Step 2 reads the tools live and flags any tool without `annotations.title` (a top-level `title` isn't enough), so the server
+  mirrors titles into annotations (philipposk/sparks#50). One acknowledgment says tool descriptions hold no instructions for the model:
+  keep descriptions factual and put agent rules in the server `instructions`. After a server change the form keeps showing the old
+  tool list; it re-reads the tools at submission time.
+- **Answers used:** slug `sparks`; author `6x7`, https://sparks.6x7.gr; use cases = the first three prompts below;
+  prerequisite "A free Sparks account"; Read and write; "We own the API"; no health data; no sponsored content.
+  Leave "Self-tested" unticked until every tool has really been called.
 - **Requirements Sparks meets:** a public HTTPS URL; OAuth; every tool has a `title` plus `readOnlyHint` or `destructiveHint`;
   read and write tools are separate; tool names are 64 characters or fewer; no catch-all request tool.
 - **You also need:** a reviewer test account full of realistic data, and proof that every tool was run in MCP Inspector or as a custom connector.
@@ -75,7 +87,7 @@ Field values to paste:
 | Name (≤100) | Sparks |
 | One-liner (≤200) | Capture and organize ideas in your Sparks notebook. |
 | Description (≤2000) | Sparks is an idea notebook. This connector lets Claude find, read, create and organize your notes, projects and subtasks, mark things done, and pick up notes you send to your agent. It signs in with OAuth and never deletes anything. |
-| Categories (1–5) | Productivity, Notes |
+| Categories (1–5) | Productivity (the form has no Notes category) |
 | Server URL | https://sparks.6x7.gr/api/mcp |
 | Auth | OAuth 2.1 (PKCE S256, DCR, refresh tokens), scope `mcp` |
 | Docs / Privacy / Terms / Support | see the top of this file |
@@ -151,11 +163,7 @@ Seed it with 3 projects (Product ideas, Travel, Reading list) and about 12 notes
 
 ## 9. awesome-mcp-servers (appcypher)
 
-- **Repo:** https://github.com/appcypher/awesome-mcp-servers. Add the entry in alphabetical order under **📝 Note Taking**, then open a PR.
-- **Entry:**
-  ```markdown
-  - <img src="https://sparks.6x7.gr/logo.svg" height="14"/> [Sparks](https://github.com/6x7gr/sparks-mcp) - Remote MCP server (OAuth) for the Sparks idea notebook: find, capture and organize notes, projects and subtasks. No delete tool.
-  ```
+- The repo is archived, so it takes no PRs. Skip it.
 
 ## 10. Web directories
 
@@ -163,10 +171,10 @@ These are plain web forms. Use the same name, one-liner, URL and icon as the Cla
 
 | Directory | Submit at | Notes |
 | --- | --- | --- |
-| mcpservers.org (also the wong2 awesome list) | https://mcpservers.org/submit | The wong2 list doesn't accept PRs. |
-| PulseMCP | https://pulsemcp.com/submit | It also imports the official registry, so check first whether Sparks is already listed. |
-| mcp.so | https://mcp.so/submit (not yet confirmed) | Needs a GitHub sign-in. |
-| Smithery | https://smithery.ai/new (docs: https://smithery.ai/docs/build/publish, "external" URL servers) | Add an existing remote server by its URL. Needs a GitHub sign-in. |
+| mcpservers.org (also the wong2 awesome list) | https://mcpservers.org/submit | No sign-in. Fields: name, category (Productivity), short description, docs URL, registry name `gr.6x7/sparks`, remote ✓ + URL, auth OAuth, contact help@6x7.gr, plan Free. |
+| PulseMCP | https://pulsemcp.com/submit | Paused since 2026-09-03. It imports the official registry. |
+| mcp.so | https://mcp.so/submit | Choose **Remote Server**. Shows a $39 paid option; don't pay without the owner's OK. |
+| Smithery | — | Stopped taking servers on 2026-10-31. |
 
 ## Notes for agents repeating this
 
@@ -175,3 +183,5 @@ These are plain web forms. Use the same name, one-liner, URL and icon as the Cla
   prepare the entries and the release PR, then give the owner the list of forms and PRs that need them.
 - The Claude, OpenAI and Cursor forms need a human: a paid or verified account, policy acknowledgments, and identity verification.
 - Never put private keys, passwords or reviewer credentials in this repo.
+- On the owner's Mac (2026-11-25), an agent could fill every form, sign in to Sparks with the email code, and open the awesome-list PR.
+  Ticking policy acknowledgments and pressing a public form's final Submit were blocked for the agent, so leave those clicks to the owner.
