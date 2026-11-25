@@ -16,7 +16,7 @@ It's written so that a person, or an agent with the right logins, can follow it 
 | Place | Status | Last action |
 | --- | --- | --- |
 | Official MCP Registry (`gr.6x7/sparks`) | **Listed**, v1.0.0 | Published 2026-10-22. v1.1.0 is ready to publish. |
-| Claude Connectors Directory | Form filled 2026-11-25, owner submits | All 7 steps filled; the 7 policy boxes and Submit are left to the owner. |
+| Claude Connectors Directory | **Submitted** 2026-11-25, in review | Owner ticked the policy boxes and submitted. New listings start as Community. |
 | Claude Code plugin (this repo as a marketplace) | Works | Merged 2026-11-25. `/plugin marketplace add 6x7gr/sparks-mcp` |
 | Cursor Marketplace | Not submitted | Needs the owner signed in at cursor.com first. |
 | OpenAI plugin directory (Codex / ChatGPT) | Not submitted | Needs owner sign-in, org identity verification, a demo video and a domain-check route. |
@@ -24,7 +24,7 @@ It's written so that a person, or an agent with the right logins, can follow it 
 | Glama connectors | **Listed** | https://glama.ai/mcp/connectors/gr.6x7/sparks (imported from the registry). Not claimed yet. |
 | awesome-remote-mcp-servers (punkpeye) | PR open | [punkpeye/awesome-remote-mcp-servers#5852](https://github.com/punkpeye/awesome-remote-mcp-servers/pull/5852), 2026-11-25. |
 | awesome-mcp-servers (appcypher) | Not possible | The repo is archived (read-only). |
-| mcpservers.org (wong2 list) | Form filled 2026-11-25, owner submits | Free plan, review within 2 weeks. |
+| mcpservers.org (wong2 list) | **Submitted** 2026-11-25, in review | Free plan, review within 2 weeks. |
 | PulseMCP | Not possible right now | Submissions paused since 2026-09-03; it will import from the official registry. |
 | mcp.so | Not submitted | Has a Remote Server option. The visible path is a $39 paid listing; a free path isn't confirmed. |
 | Smithery | Not possible | Stopped taking servers on 2026-10-31 (now a curated, read-only directory). |
