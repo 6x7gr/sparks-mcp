@@ -1,7 +1,7 @@
 {
   "name": "sparks",
   "description": "Read, capture and organize ideas in your Sparks notebook: notes, projects and subtasks over MCP with one-tap OAuth sign-in.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": { "name": "6x7", "email": "help@6x7.gr" },
   "homepage": "https://sparks.6x7.gr",
   "repository": "https://github.com/6x7gr/sparks-mcp",

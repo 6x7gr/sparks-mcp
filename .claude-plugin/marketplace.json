@@ -1,0 +1,20 @@
+{
+  "name": "sparks",
+  "owner": {
+    "name": "6x7",
+    "email": "help@6x7.gr"
+  },
+  "metadata": {
+    "description": "The official Sparks plugin for Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "sparks",
+      "source": "./",
+      "description": "Connect Claude Code to your Sparks idea notebook: find, capture and organize notes, projects and subtasks.",
+      "version": "1.1.0",
+      "category": "productivity",
+      "homepage": "https://sparks.6x7.gr"
+    }
+  ]
+}

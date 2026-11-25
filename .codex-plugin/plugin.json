@@ -1,0 +1,26 @@
+{
+  "name": "sparks",
+  "version": "1.1.0",
+  "description": "Find, capture and organize notes, projects and subtasks in your Sparks idea notebook. No delete tool.",
+  "author": { "name": "6x7", "email": "help@6x7.gr", "url": "https://sparks.6x7.gr" },
+  "homepage": "https://sparks.6x7.gr",
+  "repository": "https://github.com/6x7gr/sparks-mcp",
+  "license": "MIT",
+  "keywords": ["notes", "ideas", "productivity", "tasks", "mcp"],
+  "skills": "./skills/",
+  "mcpServers": "./mcp.json",
+  "interface": {
+    "displayName": "Sparks",
+    "shortDescription": "Your idea notebook",
+    "longDescription": "Sparks is an idea notebook. This plugin lets Codex find, read, create and organize your notes, projects and subtasks, mark things done, and pick up notes you send to your agent. It signs in with OAuth and never deletes anything.",
+    "developerName": "6x7",
+    "category": "Productivity",
+    "capabilities": ["Read", "Write"],
+    "websiteURL": "https://sparks.6x7.gr",
+    "privacyPolicyURL": "https://sparks.6x7.gr/privacy",
+    "termsOfServiceURL": "https://sparks.6x7.gr/terms",
+    "defaultPrompt": ["What's in my Sparks Inbox?", "Save this idea to Sparks", "Which Sparks notes are due this week?"],
+    "logo": "./assets/logo.png",
+    "composerIcon": "./assets/logo.svg"
+  }
+}
